@@ -77,7 +77,10 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repo: https://github.com/Mary-Tim/Mary-Tim.github.io
+  branch: master
+  message: {{now('YYYY-MM-DD HH:mm:ss')}}
 
 # Algolia Search Engine
 algolia:
