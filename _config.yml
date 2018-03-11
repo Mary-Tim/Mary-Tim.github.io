@@ -78,3 +78,9 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
+
+# Algolia Search Engine
+algolia:
+  applicationID: 'PFL2RXKRTT'
+  indexName: 'dev_Mary_Tim_blog'
+  chunkSize: 5000
