@@ -80,7 +80,7 @@ deploy:
   type: git
   repo: https://github.com/Mary-Tim/Mary-Tim.github.io
   branch: master
-  message: {{now('YYYY-MM-DD HH:mm:ss')}}
+  message: Blog
 
 # Algolia Search Engine
 algolia:
