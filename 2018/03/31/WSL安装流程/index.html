@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Linux,WSL," />
 
 
 
@@ -81,13 +81,21 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mary Tim的小站">
-<meta property="og:url" content="https://mary-tim.github.io/index.html">
+<meta name="description" content="&amp;emsp;&amp;emsp;鉴于每次重装Win10都要再把WSL(Windows Subsystem for Linux)重装一遍，而WSL至今已经迭代多次，网上许多教程所用的方式已经失效，故而自己整理一下如今的安装流程，方便以后使用。 Win10及WSL版本号： Win10：1709 (16299.248) WSL：20170830.1 build of Ubuntu 16.04 LST  安装WS">
+<meta name="keywords" content="Linux,WSL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WSL安装流程">
+<meta property="og:url" content="https://mary-tim.github.io/2018/03/31/WSL安装流程/index.html">
 <meta property="og:site_name" content="Mary Tim的小站">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;鉴于每次重装Win10都要再把WSL(Windows Subsystem for Linux)重装一遍，而WSL至今已经迭代多次，网上许多教程所用的方式已经失效，故而自己整理一下如今的安装流程，方便以后使用。 Win10及WSL版本号： Win10：1709 (16299.248) WSL：20170830.1 build of Ubuntu 16.04 LST  安装WS">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://mary-tim.github.io/2018/03/31/WSL安装流程/Subsystem开启.jpg">
+<meta property="og:image" content="https://mary-tim.github.io/2018/03/31/WSL安装流程/注册表1.jpg">
+<meta property="og:updated_time" content="2018-03-31T03:48:00.109Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mary Tim的小站">
+<meta name="twitter:title" content="WSL安装流程">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;鉴于每次重装Win10都要再把WSL(Windows Subsystem for Linux)重装一遍，而WSL至今已经迭代多次，网上许多教程所用的方式已经失效，故而自己整理一下如今的安装流程，方便以后使用。 Win10及WSL版本号： Win10：1709 (16299.248) WSL：20170830.1 build of Ubuntu 16.04 LST  安装WS">
+<meta name="twitter:image" content="https://mary-tim.github.io/2018/03/31/WSL安装流程/Subsystem开启.jpg">
 
 
 
@@ -117,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="https://mary-tim.github.io/"/>
+  <link rel="canonical" href="https://mary-tim.github.io/2018/03/31/WSL安装流程/"/>
 
 
 
 
 
-  <title>Mary Tim的小站</title>
+  <title>WSL安装流程 | Mary Tim的小站</title>
   
 
 
@@ -151,8 +159,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -263,9 +270,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -295,9 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/31/WSL安装流程/" itemprop="url">WSL安装流程</a></h1>
+          <h1 class="post-title" itemprop="name headline">WSL安装流程</h1>
         
 
         <div class="post-meta">
@@ -358,9 +363,7 @@
       
 
       
-        
-          
-            <p>&emsp;&emsp;鉴于每次重装Win10都要再把WSL(Windows Subsystem for Linux)重装一遍，而WSL至今已经迭代多次，网上许多教程所用的方式已经失效，故而自己整理一下如今的安装流程，方便以后使用。</p>
+        <p>&emsp;&emsp;鉴于每次重装Win10都要再把WSL(Windows Subsystem for Linux)重装一遍，而WSL至今已经迭代多次，网上许多教程所用的方式已经失效，故而自己整理一下如今的安装流程，方便以后使用。</p>
 <h4 id="Win10及WSL版本号："><a href="#Win10及WSL版本号：" class="headerlink" title="Win10及WSL版本号："></a>Win10及WSL版本号：</h4><ul>
 <li>Win10：1709 (16299.248)</li>
 <li>WSL：20170830.1 build of Ubuntu 16.04 LST</li>
@@ -425,8 +428,6 @@
 <li>设置并启用ssh服务后，输入<code>sudo aptitude install xinit</code>命令可以安装Ubuntu的X Server服务，这之后就可以通过Xshell唤醒图形化程序，并用Xmanager显示了。</li>
 </ul>
 
-          
-        
       
     </div>
     
@@ -441,153 +442,38 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mary-tim.github.io/2018/03/11/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Mary Tim">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mary Tim的小站">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/11/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-11T19:39:26+08:00">
-                2018-03-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
           
-            
+            <a href="/tags/WSL/" rel="tag"># WSL</a>
           
-
-          
-          
-             <span id="/2018/03/11/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/11/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -597,10 +483,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -608,6 +495,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDczNy8xMTI3NA=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -628,8 +524,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -701,6 +606,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Win10及WSL版本号："><span class="nav-number">1.</span> <span class="nav-text">Win10及WSL版本号：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装WSL"><span class="nav-number"></span> <span class="nav-text">安装WSL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WSL基本配置"><span class="nav-number"></span> <span class="nav-text">WSL基本配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#取得root权限"><span class="nav-number"></span> <span class="nav-text">取得root权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改bash界面字体"><span class="nav-number"></span> <span class="nav-text">修改bash界面字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更换源"><span class="nav-number"></span> <span class="nav-text">更换源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置并启用ssh服务"><span class="nav-number"></span> <span class="nav-text">设置并启用ssh服务</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -841,6 +762,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -869,6 +794,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
