@@ -359,73 +359,14 @@
 
       
         
-          
-            <p>&emsp;&emsp;鉴于每次重装Win10都要再把WSL(Windows Subsystem for Linux)重装一遍，而WSL至今已经迭代多次，网上许多教程所用的方式已经失效，故而自己整理一下如今的安装流程，方便以后使用。</p>
-<h4 id="Win10及WSL版本号："><a href="#Win10及WSL版本号：" class="headerlink" title="Win10及WSL版本号："></a>Win10及WSL版本号：</h4><ul>
-<li>Win10：1709 (16299.248)</li>
-<li>WSL：20170830.1 build of Ubuntu 16.04 LST</li>
-</ul>
-<h2 id="安装WSL"><a href="#安装WSL" class="headerlink" title="安装WSL"></a>安装WSL</h2><p>&emsp;&emsp;右击“开始”-&gt;应用和功能-&gt;程序和功能-&gt;启用或关闭Windows功能-&gt;勾选“适用于Linux的Windows子系统”-&gt;确定</p>
-<p><img src="/2018/03/31/WSL安装流程/Subsystem开启.jpg" alt="启用或关闭Windows功能"></p>
-<p>&emsp;&emsp;重新启动</p>
-<p>&emsp;&emsp;单击“开始”-&gt;Microsoft Store-&gt;搜索“WSL”-&gt;选择“Ubuntu”-&gt;安装，等待安装完成即可。</p>
-<p>&emsp;&emsp;现在，WSL已经安装在你的电脑中，有三种方式可以进入Ubuntu子系统：</p>
-<ul>
-<li>Win+R 输入<code>cmd</code>并回车，输入<code>bash</code>进入</li>
-<li>Win+R 输入<code>powershell</code>并回车，输入<code>bash</code>进入</li>
-<li>单击“开始” 点击Ubuntu图标</li>
-</ul>
-<p>&emsp;&emsp;个人推荐第三种方式，比较方便，且进入时目录直接指向<code>~/</code>,而前两种方法进入后的默认目录为<code>/mnt/c/User/username</code>，而且不易更改。</p>
-<p>&emsp;&emsp;单击开始菜单中的Ubuntu图标，进入bash界面，按提示设置好用户名和密码后，WSL便已安装完成，现在已经可以正常使用bash基本命令了。</p>
-<h2 id="WSL基本配置"><a href="#WSL基本配置" class="headerlink" title="WSL基本配置"></a>WSL基本配置</h2><h3 id="取得root权限"><a href="#取得root权限" class="headerlink" title="取得root权限"></a>取得root权限</h3><p>&emsp;&emsp;虽然WSL已经安装完成，但是因为并不知道WSL中root用户的默认密码，导致我们无法使用<code>su</code>命令切换至root权限，Ubuntu提供了<code>sudo</code>命令作为代替，在bash界面下输入<code>man sudo_root</code>可以获得更多信息。但如果你习惯使用<code>su</code>命令取得root权限再进行操作，可以使用以下方法更改root用户密码。</p>
-<ul>
-<li>简单的方法：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd</span><br></pre></td></tr></table></figure>
-<ul>
-<li>复杂的方法：</li>
-</ul>
-<p>&emsp;&emsp;Win+R 输入<code>powershell</code>并回车，在命令窗口中输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ubuntu config --default-user root</span><br></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;此时再启动WSL时，将以root用户身份登录。输入<code>passwd</code>更改root用户密码，按ctrl+D退出，再在命令窗口中输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ubuntu config --default-user username  <span class="comment">#your username</span></span><br></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;将”username”字段替换为之前创建的用户名，再次登录时即可使用普通用户身份登录WSL，<code>su</code>命令也可以正常使用了。</p>
-<ul>
-<li><p>由于WSL中<code>/mnt</code>下的c、d、e、f等文件夹即对应Windows系统中的各个磁盘，为保证数据安全，不建议日常使用root用户登录。</p>
-</li>
-<li><p>在powershell命令窗口中输入<code>ubuntu help</code>可以了解关于<code>ubuntu</code>命令的更多信息。</p>
-</li>
-</ul>
-<h3 id="修改bash界面字体"><a href="#修改bash界面字体" class="headerlink" title="修改bash界面字体"></a>修改bash界面字体</h3><p>&emsp;&emsp;默认的Ubuntu界面字体并不好看，但是直接修改字体的话下次再进入时会发现上次的字体设置并没有保存，目前只能通过修改注册表键值的方法保存修改。</p>
-<p>&emsp;&emsp;以Consolas字体为例，先打开Ubuntu界面，在窗口上方标题上右键-&gt;属性-&gt;字体，选择“Consloas”-&gt;确定</p>
-<p>&emsp;&emsp;Win+R 输入regedit打开注册表，找到下图的位置：</p>
-<p><img src="/2018/03/31/WSL安装流程/注册表1.jpg" alt="注册表位置"></p>
-<p>&emsp;&emsp;在右侧空白处右键-&gt;新建-&gt;DWORD(32位)值，命名“CodePage”，右击CodePage-&gt;修改，将“数值数据”改为“1b5”（对应16进制，10进制下为437），单击确定即可。</p>
-<ul>
-<li>添加过“CodePage”项后，在Ubuntu界面窗口上方右击-&gt;属性中即可随意切换字体，此时系统已经可以永久保存修改。</li>
-</ul>
-<h3 id="更换源"><a href="#更换源" class="headerlink" title="更换源"></a>更换源</h3><p>&emsp;&emsp;由于众所周知的原因，国内连接官方源的速度非常缓慢，我们需要自行更换速度较快的国内源。在这里我们使用在公网环境中速度较快的阿里源，如果您是教育网用户，还可以选用中科大源、清华源等。方法类同。</p>
-<p>&emsp;&emsp;备份原有源：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/apt</span><br><span class="line">sudo mv sources.list sources.list.bak</span><br></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;更换阿里云源：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim sources.list</span><br></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;将以下内容复制进sources.list中：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># deb cdrom:[Ubuntu 16.04 LTS _Xenial Xerus_ - Release amd64 (20160420.1)]/ xenial main restricted</span></span><br><span class="line">deb-src http://archive.ubuntu.com/ubuntu xenial main restricted <span class="comment">#Added by software-properties</span></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted multiverse universe <span class="comment">#Added by software-properties</span></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted multiverse universe <span class="comment">#Added by software-properties</span></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse <span class="comment">#Added by software-properties</span></span><br><span class="line">deb http://archive.canonical.com/ubuntu xenial partner</span><br><span class="line">deb-src http://archive.canonical.com/ubuntu xenial partner</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted multiverse universe <span class="comment">#Added by software-properties</span></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse</span><br></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;然后使用update命令即可：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>默认的Ubuntu的bash界面中，右键为粘贴</li>
-<li>如果想换用其他源，只需在网上搜索对应的sources.list内容即可</li>
-</ul>
-<p>&emsp;&emsp;换源后，推荐使用<code>aptitude</code>命令而非<code>apt-get</code>命令进行包管理，<code>aptitude</code>包管理程序需要安装：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install aptitude</span><br></pre></td></tr></table></figure></p>
-<h3 id="设置并启用ssh服务"><a href="#设置并启用ssh服务" class="headerlink" title="设置并启用ssh服务"></a>设置并启用ssh服务</h3><p>&emsp;&emsp;默认的Ubuntu界面能做到的事情实在有限，启用ssh功能并用Xshell接入是个不错的选择。</p>
-<p>&emsp;&emsp;Ubuntu自带的ssh并未正确安装，需要先重装ssh服务：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo aptitude remove openssh-server</span><br><span class="line">sudo aptitude install openssh-server</span><br></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;然后进入ssd的配置文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;修改或添加以下内容：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Port 2211  <span class="comment">#默认端口22已被Windows自身的ssh服务占用，这里需要随便换个端口</span></span><br><span class="line">PermitRootLogin no  <span class="comment">#禁止以root用户身份登录</span></span><br><span class="line">AllowUsers username  <span class="comment">#仅允许以“username”用户身份登录,请将"username"替换为自己的用户名</span></span><br><span class="line">PasswordAuthentication yes  <span class="comment">#允许使用密码进行身份验证</span></span><br></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;启用ssh服务：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service ssh start</span><br></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;在Xshell中创建新连接，设置主机地址为127.0.0.1，端口号为2211，设置好用户名及密码后，就可使用Xshell各项功能了。</p>
-<ul>
-<li>必须先打开Ubuntu的bash窗口并启用ssh服务，才能使用ssh功能。</li>
-<li>遗憾的是，现在的WSL还无法支持用户自定义功能的自启动，每次重新打开bash窗口，都必须重新键入<code>sudo service ssh start</code>命令以启动ssh服务。</li>
-<li>使用ssh服务从外部登录时，默认会显示一些登录信息，比较杂乱，如果想删去这些登录信息，可以编辑<code>/etc/update-motd.d/</code>文件夹下的各个文件，删除对应信息即可。</li>
-<li>设置并启用ssh服务后，输入<code>sudo aptitude install xinit</code>命令可以安装Ubuntu的X Server服务，这之后就可以通过Xshell唤醒图形化程序，并用Xmanager显示了。</li>
-</ul>
-
-          
+          <p>&emsp;&emsp;鉴于每次重装Win10都要再把WSL(Windows Subsystem for Linux)重装一遍，而WSL至今已经迭代多次，网上许多教程所用的方式已经失效，故而自己整理一下如今的安装流程，方便以后使用。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/31/WSL安装流程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
